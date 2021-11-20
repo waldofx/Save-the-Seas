@@ -5,11 +5,9 @@ import classes from "./Home.module.css";
 
 function Home() {
     return (
-        <div>
+        <div className={classes.bgImg}>
             <Header />
-            <div className={classes.bgImg}>
-                {/* <main className={classes.container}></main> */}
-            </div>
+            <main className={classes.container}></main>
         </div>
     );
 }
