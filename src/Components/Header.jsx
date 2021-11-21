@@ -1,13 +1,11 @@
 import React from "react";
 import classes from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
-// import logo from "../../Assets/logo-alta-header.png";
 
 function Header() {
     return (
         <header>
             <div className={classes["header-container"]}>
-                <Link to="/">{/* <img src={logo} alt="logo" /> */}</Link>
                 <ul className={classes["myList-nav"]}>
                     <li>
                         <NavLink
@@ -44,6 +42,15 @@ function Header() {
                             to="/volunteer"
                         >
                             VOLUNTEER
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            className={classes.link}
+                            activeClassName={classes.active}
+                            to="/login"
+                        >
+                            LOG IN
                         </NavLink>
                     </li>
                 </ul>
