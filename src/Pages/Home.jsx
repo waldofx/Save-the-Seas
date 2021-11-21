@@ -16,7 +16,7 @@ function Home() {
                 <p className={`${classes["text"]} ${classes["text-md"]}`}>
                     Help us save the seas by cleaning up the trash left behind!
                 </p>
-                <Link to="/contact">
+                <Link to="/about">
                     <button data-test-id="btn" className={classes.btn}>
                         Learn More
                     </button>

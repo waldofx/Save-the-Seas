@@ -34,3 +34,9 @@ header {
     color: #3bcfa3;
     font-weight: bold;
 }
+
+@media screen and (max-width: 780px) {
+    .myList-nav {
+        width: 80%;
+    }
+}
