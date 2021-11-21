@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+}
+
+.bgImg {
+    /* The image used */
+    background-image: url(../Assets/sea.webp);
+
+    /* Add the blur effect */
+    /* filter: blur(5px);
+    -webkit-filter: blur(5px); */
+    opacity: 0.5;
+
+    /* Full height */
+    min-height: 100vh;
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 70px;
+    column-gap: 50px;
+}
+
+.bgText {
+    /* background-color: rgb(0, 0, 0); Fallback color */
+    /* background-color: rgba(0, 0, 0, 0.4); Black w/opacity/see-through */
+    font-weight: bold;
+    /* border: 3px solid blue; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+.text {
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+}
+
+.text-sm {
+    font-size: 25px;
+    font-weight: 500;
+}
+.text-md {
+    font-size: 35px;
+    font-weight: 700;
+}
+.text-title {
+    font-size: 90px;
+    font-weight: 700;
+}
+
+/* button */
+.btn {
+    background-color: #0e498d;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    border: none;
+    color: white;
+    margin-top: 22px;
+}
+.btn:hover {
+    background-color: #578cc9;
+    cursor: pointer;
+}
