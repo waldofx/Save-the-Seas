@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 import NewLoading from "../Components/News/NewLoading";
 import New from "../Components/News/New";
 import classes from "./News.module.css";
@@ -11,10 +12,10 @@ function News() {
     const [isLoading, setIsLoading] = useState(true);
     const apiurl =
         "https://newsapi.org/v2/everything?" +
-        "q=%2B%28ocean+or+sea%29+AND+pollution&" +
+        "q=%2B%28ocean+or+sea%29+AND+pollution+AND+trash&" +
         // "from=2021-11-13&" +
         // "to=2021-11-18&" +
-        "sortBy=popularity&" +
+        "sortBy=publishedAt&" +
         "apiKey=e5ad7ef6435747e6b7eb99be53df986e";
 
     useEffect(() => {
@@ -60,6 +61,7 @@ function News() {
                     </ul>
                 )}
             </div>
+            <Footer />
         </div>
     );
 }
