@@ -8,7 +8,7 @@ function New({ author, title, desc, image, url, date }) {
             <Card>
                 <div className={classes.contain}>
                     <div className={classes.thumb}>
-                        <img src={image} alt="new" />
+                        <img src={image} alt="news_thumbnail" />
                     </div>
                     <div className={classes.content}>
                         <h1>
