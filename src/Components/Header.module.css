@@ -3,6 +3,7 @@ header {
     /* position: absolute; */
     z-index: 2;
     width: 100%;
+    margin: 0;
 }
 .header-container {
     display: flex;
@@ -10,7 +11,7 @@ header {
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
 }
 
 .myList-nav {
@@ -33,4 +34,10 @@ header {
 .active {
     color: #3bcfa3;
     font-weight: bold;
+}
+
+@media screen and (max-width: 780px) {
+    .myList-nav {
+        width: 80%;
+    }
 }

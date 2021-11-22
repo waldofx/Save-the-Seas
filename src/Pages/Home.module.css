@@ -1,10 +1,6 @@
-* {
-    margin: 0;
-}
-
 .bgImg {
     /* The image used */
-    background-image: url(../Assets/sea.webp);
+    background-image: url(../Assets/Images/sea.webp);
 
     /* Add the blur effect */
     /* filter: blur(5px);
