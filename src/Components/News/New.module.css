@@ -39,6 +39,12 @@
 .list p,
 .list a {
     color: #1d3557;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 780px) {

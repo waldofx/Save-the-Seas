@@ -35,7 +35,7 @@ function News() {
     return (
         <div>
             <Header />
-            <h3 className={classes.title}>News Today</h3>
+            <h3 className={classes.title}>What’s the latest news?</h3>
             <div className={classes.container}>
                 {error && <p className={classes.error}>{error}</p>}
                 {isLoading &&

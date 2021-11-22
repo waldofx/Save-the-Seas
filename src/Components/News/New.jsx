@@ -16,7 +16,7 @@ function New({ author, title, desc, image, url, date }) {
                                 {title}
                             </a>
                         </h1>
-                        <h2>{date}</h2>
+                        <p>{date}</p>
                         <p>{desc}</p>
                         {/* <p>Author : {author}</p> */}
                     </div>
