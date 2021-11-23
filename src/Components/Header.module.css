@@ -41,6 +41,7 @@ header {
 a.icon {
     font-size: 25px;
     display: none;
+    margin: 12px 0;
 }
 
 @media screen and (max-width: 780px) {

@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import NewLoading from "../Components/News/NewLoading";
 import New from "../Components/News/New";
-import classes from "./News.module.css";
+import styles from "./News.module.css";
 import axios from "axios";
 
 function News() {
@@ -36,9 +36,9 @@ function News() {
     return (
         <div>
             <Header />
-            <h3 className={classes.title}>What’s the latest news?</h3>
-            <div className={classes.container}>
-                {error && <p className={classes.error}>{error}</p>}
+            <h3 className={styles.title}>What’s the latest news?</h3>
+            <div className={styles.container}>
+                {error && <p className={styles.error}>{error}</p>}
                 {isLoading &&
                     [1, 1, 1, 1].map((el, idx) => {
                         return <NewLoading key={idx} />;
