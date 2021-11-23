@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Header.module.css";
-import "./a.css";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 
@@ -28,6 +27,13 @@ function Header() {
                 }`}
             >
                 <ul className={styles["myList-nav"]}> */}
+                    {/* <a
+                        href="javascript:void(0);"
+                        className={styles.icon}
+                        onClick={() => setMenuState(!menuActive)}
+                    >
+                        &#9776;
+                    </a> */}
                     <li>
                         <NavLink
                             className={styles.link}
