@@ -1,8 +1,12 @@
-import React from "react";
-
-const Event = (props) => {
-    const { title, location, date, participants, image, desc } = props.data;
-    return <div>aa</div>;
+const Event = ({ title, location, date, participants, image, desc }) => {
+    return (
+        <div>
+            <div>
+                {title}, location: {location}, date: {date}, participants:{" "}
+                {participants}
+            </div>
+        </div>
+    );
 };
 
 export default Event;

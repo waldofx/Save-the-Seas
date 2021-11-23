@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+//import components and styles
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import styles from "./Volunteer.module.css";
@@ -25,6 +27,7 @@ function Volunteer() {
     const isError = errorDataByParticipants;
     const isLoading = loadingDataByParticipants;
 
+    // ----------------- render -------------------------
     return (
         <div>
             <Header />
@@ -37,20 +40,17 @@ function Volunteer() {
                 {!isError && !isLoading && (
                     <ul>
                         {eventdatas.map((e) => {
-                            console.log(e.title);
+                            // console.log(e.title);
                             return (
-                                // <Event
-                                //     // key={idx}
-                                //     title={e.title}
-                                //     location={e.location}
-                                //     date={e.date}
-                                //     participants={e.participants}
-                                //     image={e.img}
-                                //     desc={e.desc}
-                                // />
-                                <p>
-                                    {e.title}, {e.location}
-                                </p>
+                                <Event
+                                    key={e.id}
+                                    title={e.title}
+                                    location={e.location}
+                                    date={e.date}
+                                    participants={e.participants}
+                                    image={e.img}
+                                    desc={e.desc}
+                                />
                             );
                         })}
                     </ul>
