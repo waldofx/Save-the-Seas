@@ -1,11 +1,11 @@
 import React from "react";
-import classes from "./Footer.module.css";
+import styles from "./Footer.module.css";
 
 function Footer() {
     return (
         <footer>
-            <div className={classes["footer-container"]}>
-                <div className={classes["social-container"]}>
+            <div className={styles["footer-container"]}>
+                <div className={styles["social-container"]}>
                     <a href="">
                         <img
                             alt="location"
@@ -37,7 +37,7 @@ function Footer() {
                         />
                     </a>
                 </div>
-                <div className={classes["text"]}>© 2021, Save The Seas</div>
+                <div className={styles["text"]}>© 2021, Save The Seas</div>
             </div>
         </footer>
     );

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        // <div className={classes.bgImg}>
         <div>
             <Header />
             <div className={classes.bgImg}></div>

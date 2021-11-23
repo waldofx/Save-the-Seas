@@ -1,16 +1,37 @@
 import React from "react";
-import classes from "./Header.module.css";
+import styles from "./Header.module.css";
+import "./a.css";
 import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function Header() {
+    const [menuActive, setMenuState] = useState(false);
+
     return (
         <header>
-            <div className={classes["header-container"]}>
-                <ul className={classes["myList-nav"]}>
+            <div className={styles["header-container"]}>
+                <a
+                    href="javascript:void(0);"
+                    className={styles.icon}
+                    onClick={() => setMenuState(!menuActive)}
+                >
+                    &#9776;
+                </a>
+                <ul
+                    className={`${styles["myList-nav"]} ${
+                        menuActive ? styles["responsive"] : ""
+                    }`}
+                >
+                    {/* <div
+                className={`${styles["header-container"]} ${
+                    menuActive ? styles["responsive"] : ""
+                }`}
+            >
+                <ul className={styles["myList-nav"]}> */}
                     <li>
                         <NavLink
-                            className={classes.link}
-                            activeClassName={classes.active}
+                            className={styles.link}
+                            activeClassName={styles.active}
                             to="/"
                             exact
                         >
@@ -19,8 +40,8 @@ function Header() {
                     </li>
                     <li>
                         <NavLink
-                            className={classes.link}
-                            activeClassName={classes.active}
+                            className={styles.link}
+                            activeClassName={styles.active}
                             to="/about"
                         >
                             ABOUT
@@ -28,8 +49,8 @@ function Header() {
                     </li>
                     <li>
                         <NavLink
-                            className={classes.link}
-                            activeClassName={classes.active}
+                            className={styles.link}
+                            activeClassName={styles.active}
                             to="/news"
                         >
                             NEWS
@@ -37,8 +58,8 @@ function Header() {
                     </li>
                     <li>
                         <NavLink
-                            className={classes.link}
-                            activeClassName={classes.active}
+                            className={styles.link}
+                            activeClassName={styles.active}
                             to="/volunteer"
                         >
                             VOLUNTEER
@@ -46,8 +67,8 @@ function Header() {
                     </li>
                     <li>
                         <NavLink
-                            className={classes.link}
-                            activeClassName={classes.active}
+                            className={styles.link}
+                            activeClassName={styles.active}
                             to="/login"
                         >
                             LOG IN
