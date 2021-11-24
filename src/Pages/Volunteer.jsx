@@ -37,7 +37,7 @@ function Volunteer() {
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
-                    <ul>
+                    <ul className={styles.eventlist}>
                         {eventdatas.map((e) => {
                             // console.log(e.title);
                             return (

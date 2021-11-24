@@ -12,8 +12,9 @@ const Event = ({ title, location, date, participants, image, desc }) => {
             </div>
             <div className={styles["content"]}>
                 <h1>{title}</h1>
-                location: {location}, date: {date}, participants:
-                {participants}
+                <p>location: {location}</p>
+                <p>date: {date}</p>
+                <p>participants: {participants}</p>
                 <p>{desc}</p>
             </div>
         </div>

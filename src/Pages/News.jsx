@@ -16,6 +16,7 @@ function News() {
         // "from=2021-11-13&" +
         // "to=2021-11-18&" +
         "sortBy=publishedAt&" +
+        "excludeDomains=nytimes.com&" +
         "apiKey=e5ad7ef6435747e6b7eb99be53df986e";
 
     useEffect(() => {
