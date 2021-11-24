@@ -4,8 +4,9 @@
     transition: 0.3s ease-in-out;
     background-color: white;
     min-width: 250px;
-    max-width: 500px;
+    width: 300px;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .card:hover {

@@ -2,6 +2,8 @@
     display: flex;
     padding-inline-end: 40px;
     overflow: visible;
+    flex-basis: 33%;
+    flex-wrap: wrap;
 }
 
 /* @media screen and (max-width: 780px) {
