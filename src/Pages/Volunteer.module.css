@@ -3,3 +3,9 @@
     padding-inline-end: 40px;
     overflow: visible;
 }
+
+/* @media screen and (max-width: 780px) {
+    .eventlist {
+        width: auto;
+    }
+} */

@@ -37,22 +37,40 @@ function Volunteer() {
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
-                    <ul className={styles.eventlist}>
-                        {eventdatas.map((e) => {
-                            // console.log(e.title);
-                            return (
-                                <Event
-                                    key={e.id}
-                                    title={e.title}
-                                    location={e.location}
-                                    date={e.date}
-                                    participants={e.participants}
-                                    image={e.img}
-                                    desc={e.desc}
-                                />
-                            );
-                        })}
-                    </ul>
+                    <div>
+                        <ul className={styles.eventlist}>
+                            {eventdatas.map((e) => {
+                                // console.log(e.title);
+                                return (
+                                    <Event
+                                        key={e.id}
+                                        title={e.title}
+                                        location={e.location}
+                                        date={e.date}
+                                        participants={e.participants}
+                                        image={e.img}
+                                        desc={e.desc}
+                                    />
+                                );
+                            })}
+                        </ul>
+                        <ul className={styles.eventlist}>
+                            {eventdatas.map((e) => {
+                                // console.log(e.title);
+                                return (
+                                    <Event
+                                        key={e.id}
+                                        title={e.title}
+                                        location={e.location}
+                                        date={e.date}
+                                        participants={e.participants}
+                                        image={e.img}
+                                        desc={e.desc}
+                                    />
+                                );
+                            })}
+                        </ul>
+                    </div>
                 )}
             </div>
             <Footer />
