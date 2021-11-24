@@ -33,7 +33,6 @@ function Volunteer() {
             <Header />
             <div className={styles.breakTitle}>What's popular?</div>
             <div className={styles.container}></div>
-            <div>Volunteer Box</div>
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
