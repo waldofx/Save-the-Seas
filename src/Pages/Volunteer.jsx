@@ -32,7 +32,7 @@ function Volunteer() {
         <div>
             <Header />
             <div className={styles.breakTitle}>What's popular?</div>
-            <div className={styles.container}></div>
+            <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}

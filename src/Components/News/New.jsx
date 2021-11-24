@@ -1,17 +1,17 @@
 import React from "react";
-import classes from "./New.module.css";
+import styles from "./New.module.css";
 import Card from "./Card";
 
 function New({ author, title, desc, image, url, date }) {
     return (
-        <li data-testid="new" className={classes.list}>
+        <li data-testid="new" className={styles.list}>
             <Card>
-                <div className={classes.contain}>
-                    <div className={classes.thumb}>
+                <div className={styles.contain}>
+                    <div className={styles.thumb}>
                         <img src={image} alt="news_thumbnail" />
                     </div>
-                    <div className={classes.content}>
-                        <h1>
+                    <div className={styles.content}>
+                        <h1 className={styles.h1}>
                             <a href={url} rel="noopener noreferrer">
                                 {title}
                             </a>

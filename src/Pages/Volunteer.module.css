@@ -1,13 +1,14 @@
 .eventlist {
     display: flex;
-    padding-inline-end: 40px;
+    /* padding-inline-end: 40px; */
     overflow: visible;
     flex-basis: 33%;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-/* @media screen and (max-width: 780px) {
-    .eventlist {
-        width: auto;
-    }
-} */
+.breakTitle {
+    font-size: 30px;
+    margin-left: 1%;
+    margin-top: 10px;
+}

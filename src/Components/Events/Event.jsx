@@ -12,11 +12,15 @@ const Event = ({ title, location, date, participants, image, desc }) => {
             </div>
             <div className={styles["content"]}>
                 <h1>{title}</h1>
-                <p>location: {location}</p>
-                <p>date: {date}</p>
-                <p>participants: {participants}</p>
+                <h4>Location: {location}</h4>
+                <h5>Date: {date}</h5>
                 <p>{desc}</p>
+                <p>
+                    Current Participants:{" "}
+                    <span className={styles.participants}>{participants}</span>
+                </p>
             </div>
+            <button>Participate</button>
         </div>
     );
 };
