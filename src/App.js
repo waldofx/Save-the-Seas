@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import News from "./Pages/News";
+import Volunteer from "./Pages/Volunteer";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/" exact component={Home} />
                         <Route path="/about" exact component={About} />
                         <Route path="/news" exact component={News} />
+                        <Route path="/volunteer" exact component={Volunteer} />
                         {/* <Route path="*" exact component={NotFound} /> */}
                     </Switch>
                 </Router>

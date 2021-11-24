@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./New.module.css";
+import styles from "./New.module.css";
 import Card from "./Card";
 import Skeleton from "react-loading-skeleton";
 
 function NewLoading() {
     return (
-        <div className={classes.list}>
+        <div className={styles.list}>
             <Card>
-                <div className={classes.contain}>
-                    <div className={classes.wrapper}>
+                <div className={styles.contain}>
+                    <div className={styles.wrapper}>
                         <Skeleton height={250} />
                     </div>
                     <h3>
