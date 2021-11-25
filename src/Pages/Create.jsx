@@ -13,20 +13,20 @@ import {
     validateEmail,
     validatePhoneNumber,
 } from "../Hooks/Validation/index";
-import { addFormData } from "../Store/formData";
+import { addFormData } from "../Store/formDataSlice";
 
 function Contact() {
     const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        phoneNumber: "",
-        nationality: "",
-        message: "",
+        title: "",
+        location: "",
+        date: "",
+        image: "",
+        description: "",
     });
     const [error, setError] = useState({
-        fullName: "",
-        email: "",
-        phoneNumber: "",
+        title: "",
+        location: "",
+        date: "",
     });
 
     const dispatch = useDispatch();
@@ -36,30 +36,30 @@ function Contact() {
         const name = e.target.name;
         const value = e.target.value;
 
-        if (name === "fullName") {
-            const valFullName = validateName(value);
-            if (!valFullName.status) {
-                setError((prev) => ({ ...prev, [name]: valFullName.message }));
+        if (name === "title") {
+            const valTitle = validateName(value);
+            if (!valTitle.status) {
+                setError((prev) => ({ ...prev, [name]: valTitle.message }));
             } else {
                 setError((prev) => ({ ...prev, [name]: "" }));
             }
         }
 
-        if (name === "email") {
-            const valEmail = validateEmail(value);
-            if (!valEmail.status) {
-                setError((prev) => ({ ...prev, [name]: valEmail.message }));
+        if (name === "location") {
+            const valLocation = validateEmail(value);
+            if (!valLocation.status) {
+                setError((prev) => ({ ...prev, [name]: valLocation.message }));
             } else {
                 setError((prev) => ({ ...prev, [name]: "" }));
             }
         }
 
-        if (name === "phoneNumber") {
-            const valPhoneNumber = validatePhoneNumber(value);
-            if (!valPhoneNumber.status) {
+        if (name === "date") {
+            const valDate = validatePhoneNumber(value);
+            if (!valDate.status) {
                 setError((prev) => ({
                     ...prev,
-                    [name]: valPhoneNumber.message,
+                    [name]: valDate.message,
                 }));
             } else {
                 setError((prev) => ({ ...prev, [name]: "" }));
@@ -74,23 +74,23 @@ function Contact() {
     function handleSubmit(e) {
         e.preventDefault();
         let formIsValid = true;
-        const valFullName = validateName(formData.fullName);
-        if (!valFullName.status) {
-            setError((prev) => ({ ...prev, fullName: valFullName.message }));
+        const valTitle = validateName(formData.title);
+        if (!valTitle.status) {
+            setError((prev) => ({ ...prev, title: valTitle.message }));
             formIsValid = false;
         }
 
-        const valEmail = validateEmail(formData.email);
-        if (!valEmail.status) {
-            setError((prev) => ({ ...prev, email: valEmail.message }));
+        const valLocation = validateEmail(formData.location);
+        if (!valLocation.status) {
+            setError((prev) => ({ ...prev, location: valLocation.message }));
             formIsValid = false;
         }
 
-        const valPhoneNumber = validatePhoneNumber(formData.phoneNumber);
-        if (!valPhoneNumber.status) {
+        const valDate = validatePhoneNumber(formData.date);
+        if (!valDate.status) {
             setError((prev) => ({
                 ...prev,
-                phoneNumber: valPhoneNumber.message,
+                date: valDate.message,
             }));
             formIsValid = false;
         }
@@ -105,70 +105,71 @@ function Contact() {
         <div>
             <Header />
             <div className={styles.myContainer}>
-                <div className={styles.left}>
+                {/* <div className={styles.left}>
                     <div className={styles.inner}>
-                        {/* <img src={logo} alt="" /> */}
+                        <img src={logo} alt="" />
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.right}>
                     <form onSubmit={handleSubmit} action="">
-                        <h1>Contact Us</h1>
+                        <h1>Create a New Event</h1>
+                        <div className={styles["form-control"]}>
+                            <label htmlFor="title" className={styles.required}>
+                                Title
+                            </label>
+                            <input
+                                aria-labelledby="title"
+                                data-testid="title"
+                                name="title"
+                                type="text"
+                                onChange={handleChange}
+                                placeholder="The event's title here..."
+                                value={formData.title}
+                            />
+                            <p className={styles.error}>{error.title}</p>
+                        </div>
                         <div className={styles["form-control"]}>
                             <label
-                                htmlFor="fullName"
+                                htmlFor="location"
                                 className={styles.required}
                             >
-                                Full Name
+                                Location Address
                             </label>
                             <input
-                                aria-labelledby="fullName"
-                                data-testid="fullname"
-                                name="fullName"
-                                type="text"
+                                data-testid="location"
+                                name="location"
                                 onChange={handleChange}
-                                placeholder="Your Full Name Here..."
-                                value={formData.fullName}
-                            />
-                            <p className={styles.error}>{error.fullName}</p>
-                        </div>
-                        <div className={styles["form-control"]}>
-                            <label htmlFor="email" className={styles.required}>
-                                Email Address
-                            </label>
-                            <input
-                                data-testid="email"
-                                name="email"
-                                onChange={handleChange}
-                                placeholder="example@domail.com"
-                                value={formData.email}
+                                placeholder="The event’s location here..."
+                                value={formData.location}
                                 type="text"
                             />
-                            <p className={styles.error}>{error.email}</p>
+                            <p className={styles.error}>{error.location}</p>
                         </div>
                         <div className={styles["form-control"]}>
                             <label
-                                htmlFor="phoneNumber"
+                                htmlFor="date"
                                 className={styles["required"]}
                             >
-                                Phone Number
+                                Date
                             </label>
                             <input
-                                data-testid="phonenumber"
-                                name="phoneNumber"
+                                data-testid="date"
+                                name="date"
                                 onChange={handleChange}
-                                placeholder="08573890xxxxx"
-                                value={formData.phoneNumber}
-                                type="text"
+                                // placeholder="yyyy-mm-dd"
+                                value={formData.date}
+                                type="date"
+                                format="yyyy/mm/dd"
                             />
-                            <p className={styles.error}>{error.phoneNumber}</p>
+                            <p className={styles.error}>{error.date}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="nationality">Nationality</label>
+                            <label htmlFor="image">Image</label>
                             <select
                                 data-testid="select"
-                                name="nationality"
+                                name="image"
                                 onChange={handleChange}
-                                value={formData.nationality}
+                                value={formData.image}
                                 id=""
                             >
                                 <option value="">Selected</option>
@@ -176,14 +177,15 @@ function Contact() {
                                 <option value="French">French</option>
                                 <option value="Australia">Australia</option>
                             </select>
+                            <p className={styles.error}>{error.image}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="description">Description</label>
                             <textarea
-                                data-testid="message"
-                                name="message"
+                                data-testid="description"
+                                name="description"
                                 onChange={handleChange}
-                                value={formData.message}
+                                value={formData.description}
                                 placeholder="Your Full Name Here..."
                             ></textarea>
                         </div>
