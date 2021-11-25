@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 //import components and styles
 import Header from "../Components/Header";
@@ -43,6 +44,14 @@ function Volunteer() {
     return (
         <div>
             <Header />
+            <NavLink
+                className={styles.link}
+                activeClassName={styles.active}
+                to="/volunteer/create"
+                exact
+            >
+                Create
+            </NavLink>
             <div className={styles.breakTitle}>Upcoming Events</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>

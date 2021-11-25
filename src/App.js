@@ -4,10 +4,13 @@ import "./App.css";
 import { Provider } from "react-redux";
 import { persistor, store } from "./Store";
 import { PersistGate } from "redux-persist/integration/react";
+
+//import pages
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import News from "./Pages/News";
 import Volunteer from "./Pages/Volunteer";
+import Create from "./Pages/Create";
 
 function App() {
     return (
@@ -19,6 +22,11 @@ function App() {
                         <Route path="/about" exact component={About} />
                         <Route path="/news" exact component={News} />
                         <Route path="/volunteer" exact component={Volunteer} />
+                        <Route
+                            path="/volunteer/create"
+                            exact
+                            component={Create}
+                        />
                         {/* <Route path="*" exact component={NotFound} /> */}
                     </Switch>
                 </Router>
