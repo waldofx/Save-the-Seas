@@ -166,18 +166,15 @@ function Contact() {
                         </div>
                         <div className={styles["form-control"]}>
                             <label htmlFor="image">Image</label>
-                            <select
-                                data-testid="select"
+                            <input
+                                data-testid="choose"
+                                id="image"
                                 name="image"
                                 onChange={handleChange}
                                 value={formData.image}
-                                id=""
-                            >
-                                <option value="">Selected</option>
-                                <option value="Indonesia">Indonesia</option>
-                                <option value="French">French</option>
-                                <option value="Australia">Australia</option>
-                            </select>
+                                type="file"
+                                accept="image/png, image/jpeg"
+                            ></input>
                             <p className={styles.error}>{error.image}</p>
                         </div>
                         <div className={styles["form-control"]}>
