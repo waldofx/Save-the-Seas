@@ -9,9 +9,9 @@ import styles from "./Create.module.css";
 
 //import hooks
 import {
-    validateName,
-    validateEmail,
-    validatePhoneNumber,
+    validateTitle,
+    validateLocation,
+    validateDate,
 } from "../Hooks/Validation/index";
 import { addFormData } from "../Store/formDataSlice";
 
@@ -37,7 +37,7 @@ function Contact() {
         const value = e.target.value;
 
         if (name === "title") {
-            const valTitle = validateName(value);
+            const valTitle = validateTitle(value);
             if (!valTitle.status) {
                 setError((prev) => ({ ...prev, [name]: valTitle.message }));
             } else {
@@ -46,7 +46,7 @@ function Contact() {
         }
 
         if (name === "location") {
-            const valLocation = validateEmail(value);
+            const valLocation = validateLocation(value);
             if (!valLocation.status) {
                 setError((prev) => ({ ...prev, [name]: valLocation.message }));
             } else {
@@ -55,7 +55,7 @@ function Contact() {
         }
 
         if (name === "date") {
-            const valDate = validatePhoneNumber(value);
+            const valDate = validateDate(value);
             if (!valDate.status) {
                 setError((prev) => ({
                     ...prev,
@@ -74,19 +74,19 @@ function Contact() {
     function handleSubmit(e) {
         e.preventDefault();
         let formIsValid = true;
-        const valTitle = validateName(formData.title);
+        const valTitle = validateTitle(formData.title);
         if (!valTitle.status) {
             setError((prev) => ({ ...prev, title: valTitle.message }));
             formIsValid = false;
         }
 
-        const valLocation = validateEmail(formData.location);
+        const valLocation = validateLocation(formData.location);
         if (!valLocation.status) {
             setError((prev) => ({ ...prev, location: valLocation.message }));
             formIsValid = false;
         }
 
-        const valDate = validatePhoneNumber(formData.date);
+        const valDate = validateDate(formData.date);
         if (!valDate.status) {
             setError((prev) => ({
                 ...prev,
@@ -97,7 +97,8 @@ function Contact() {
 
         if (formIsValid) {
             dispatch(addFormData(formData));
-            history.push("/review");
+            // history.push("/review");
+            console.log("Data submitted: ", formData);
         }
     }
 

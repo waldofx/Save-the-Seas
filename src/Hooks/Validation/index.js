@@ -1,5 +1,5 @@
-import { validateName } from "./nameValidation";
-import { validatePhoneNumber } from "./phoneNumberValidation";
-import { validateEmail } from "./emailValidation";
+import { validateTitle } from "./titleValidation";
+import { validateDate } from "./dateValidation";
+import { validateLocation } from "./locationValidation";
 
-export { validateName, validateEmail, validatePhoneNumber };
+export { validateTitle, validateLocation, validateDate };
