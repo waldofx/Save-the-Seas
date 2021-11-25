@@ -21,17 +21,17 @@ function Volunteer() {
         useGetDataByDate();
 
     //setevents at the start of render using useeffect
-    const [eventdatas, setEvents] = useState([]);
+    const [eventdatasP, setEventsP] = useState([]);
     useEffect(() => {
         if (dataByParticipants) {
-            setEvents(dataByParticipants.events);
+            setEventsP(dataByParticipants.events);
         }
     }, [dataByParticipants]);
 
-    const [eventdatas2, setEvents2] = useState([]);
+    const [eventdatasD, setEventsD] = useState([]);
     useEffect(() => {
         if (dataByDate) {
-            setEvents2(dataByDate.events);
+            setEventsD(dataByDate.events);
         }
     }, [dataByDate]);
 
@@ -43,17 +43,18 @@ function Volunteer() {
     return (
         <div>
             <Header />
-            <div className={styles.breakTitle}>What's popular?</div>
+            <div className={styles.breakTitle}>Upcoming Events</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatas.map((e) => {
+                        {eventdatasD.map((e) => {
                             return (
                                 <Event
                                     key={e.id}
+                                    id={e.id}
                                     title={e.title}
                                     location={e.location}
                                     date={e.date}
@@ -66,17 +67,18 @@ function Volunteer() {
                     </ul>
                 )}
             </div>
-            <div className={styles.breakTitle}>Upcoming Events</div>
+            <div className={styles.breakTitle}>What's popular?</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatas2.map((e) => {
+                        {eventdatasP.map((e) => {
                             return (
                                 <Event
                                     key={e.id}
+                                    id={e.id}
                                     title={e.title}
                                     location={e.location}
                                     date={e.date}

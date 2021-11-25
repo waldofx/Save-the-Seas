@@ -1,6 +1,15 @@
 import styles from "./Event.module.css";
+import useIncrementParticipants from "../../Hooks/UseIncrementParticipants";
 
-const Event = ({ title, location, date, participants, image, desc }) => {
+const Event = ({ id, title, location, date, participants, image, desc }) => {
+    const { incrementParticipants } = useIncrementParticipants();
+    const participateHandler = () => {
+        incrementParticipants({
+            variables: {
+                id: id,
+            },
+        });
+    };
     return (
         <div className={styles.card}>
             <div>
@@ -20,7 +29,7 @@ const Event = ({ title, location, date, participants, image, desc }) => {
                     <span className={styles.participants}>{participants}</span>
                 </p>
             </div>
-            <button>Participate</button>
+            <button onClick={participateHandler}>Participate</button>
         </div>
     );
 };
