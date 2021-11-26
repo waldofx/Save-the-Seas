@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 //import components and styles
@@ -14,14 +14,15 @@ import {
     validateDate,
 } from "../Hooks/Validation/index";
 import { addFormData } from "../Store/formDataSlice";
+import useInsertEvent from "../Hooks/useInsertEvents";
 
 function Contact() {
     const [formData, setFormData] = useState({
         title: "",
         location: "",
         date: "",
-        image: "",
-        description: "",
+        img: "",
+        desc: "",
     });
     const [error, setError] = useState({
         title: "",
@@ -31,6 +32,7 @@ function Contact() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const { insertEvents } = useInsertEvent();
 
     function handleChange(e) {
         const name = e.target.name;
@@ -97,8 +99,13 @@ function Contact() {
 
         if (formIsValid) {
             dispatch(addFormData(formData));
-            // history.push("/review");
+            history.push("/volunteer/create");
             console.log("Data submitted: ", formData);
+            insertEvents({
+                variables: {
+                    object: formData,
+                },
+            });
         }
     }
 
@@ -165,25 +172,25 @@ function Contact() {
                             <p className={styles.error}>{error.date}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="image">Image</label>
+                            <label htmlFor="img">Image</label>
                             <input
                                 data-testid="choose"
-                                id="image"
-                                name="image"
+                                id="img"
+                                name="img"
                                 onChange={handleChange}
-                                value={formData.image}
+                                value={formData.img}
                                 type="file"
                                 accept="image/png, image/jpeg"
                             ></input>
-                            <p className={styles.error}>{error.image}</p>
+                            <p className={styles.error}>{error.img}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="description">Description</label>
+                            <label htmlFor="desc">Description</label>
                             <textarea
-                                data-testid="description"
-                                name="description"
+                                data-testid="desc"
+                                name="desc"
                                 onChange={handleChange}
-                                value={formData.description}
+                                value={formData.desc}
                                 placeholder="Your Full Name Here..."
                             ></textarea>
                         </div>
