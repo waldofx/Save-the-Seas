@@ -15,6 +15,7 @@ import {
 } from "../Hooks/Validation/index";
 import { addFormData } from "../Store/formDataSlice";
 import useInsertEvent from "../Hooks/useInsertEvents";
+import { app } from "../base";
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -68,6 +69,25 @@ function Contact() {
             }
         }
 
+        if (name === "img") {
+            //send image to firebase
+            console.log("on change img triggered!");
+            console.log("files:", e.target.files[0]);
+            const file = e.target.files[0];
+            const storageRef = app.storage().ref();
+            const fileRef = storageRef.child(file.name);
+            console.log("file = ", file);
+            console.log("storageRef = ", storageRef);
+            console.log("fileRef = ", fileRef);
+            fileRef.put(file).then((e) => {
+                console.log("Uploaded a file");
+                console.log("didalam e = ", e);
+                e.ref.getDownloadURL().then(function (downloadURL) {
+                    console.log("File available at", downloadURL);
+                });
+            });
+        }
+
         setFormData((prev) => {
             return { ...prev, [name]: value };
         });
@@ -99,13 +119,15 @@ function Contact() {
 
         if (formIsValid) {
             dispatch(addFormData(formData));
-            history.push("/volunteer/create");
+            //history.push("/volunteer/create"); //change page after submit
             console.log("Data submitted: ", formData);
-            insertEvents({
-                variables: {
-                    object: formData,
-                },
-            });
+
+            //insert data to hasura
+            // insertEvents({
+            //     variables: {
+            //         object: formData,
+            //     },
+            // });
         }
     }
 
