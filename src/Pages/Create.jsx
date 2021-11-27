@@ -112,7 +112,6 @@ function Contact() {
 
         if (formIsValid) {
             dispatch(addFormData(formData));
-            //history.push("/volunteer/create"); //change page after submit
             console.log("Data submitted: ", formData);
 
             // send image to firebase
@@ -141,6 +140,8 @@ function Contact() {
                         },
                     });
                     console.log("Data berhasil dikirim ke database!");
+                    alert("Data berhasil dikirim ke database!");
+                    history.push("/volunteer/create"); //change page after submit
                 });
             });
         }
