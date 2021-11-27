@@ -17,4 +17,18 @@ const IncrementParticipants = gql`
     }
 `;
 
-export { IncrementParticipants };
+const InsertEvents = gql`
+    mutation MyMutation($object: events_insert_input = {}) {
+        insert_events_one(object: $object) {
+            date
+            desc
+            id
+            img
+            location
+            participants
+            title
+        }
+    }
+`;
+
+export { IncrementParticipants, InsertEvents };

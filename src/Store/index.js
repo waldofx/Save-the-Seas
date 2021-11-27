@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import formData from "./formData";
+import formData from "./formDataSlice";
 
 const reducers = combineReducers({
     formData: formData.reducer,
