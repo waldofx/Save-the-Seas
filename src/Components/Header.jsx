@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./Header.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
+
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 
 function Header() {
     const [menuActive, setMenuState] = useState(false);
@@ -72,13 +75,15 @@ function Header() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
+                        {/* <NavLink
                             className={styles.link}
                             activeClassName={styles.active}
                             to="/login"
                         >
                             LOG IN
-                        </NavLink>
+                        </NavLink> */}
+                        <LoginButton />
+                        <LogoutButton />
                     </li>
                 </ul>
             </div>
