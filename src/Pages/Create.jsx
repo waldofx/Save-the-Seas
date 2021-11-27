@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 //import components and styles
 import Header from "../Components/Header";
@@ -24,6 +25,8 @@ function Contact() {
         date: "",
         img: "",
         desc: "",
+        file: "",
+        // url:"",
     });
     const [error, setError] = useState({
         title: "",
@@ -74,18 +77,25 @@ function Contact() {
             console.log("on change img triggered!");
             console.log("files:", e.target.files[0]);
             const file = e.target.files[0];
-            const storageRef = app.storage().ref();
-            const fileRef = storageRef.child(file.name);
-            console.log("file = ", file);
-            console.log("storageRef = ", storageRef);
-            console.log("fileRef = ", fileRef);
-            fileRef.put(file).then((e) => {
-                console.log("Uploaded a file");
-                console.log("didalam e = ", e);
-                e.ref.getDownloadURL().then(function (downloadURL) {
-                    console.log("File available at", downloadURL);
-                });
+            setFormData((prev) => {
+                return { ...prev, file: file };
             });
+
+            // const storageRef = app.storage().ref();
+            // const fileRef = storageRef.child(file.name);
+            // console.log("file = ", file);
+            // console.log("storageRef = ", storageRef);
+            // console.log("fileRef = ", fileRef);
+            // fileRef.put(file).then((e) => {
+            //     console.log("Uploaded a file");
+            //     console.log("didalam e = ", e);
+            //     e.ref.getDownloadURL().then(function (downloadURL) {
+            //         console.log("File available at", downloadURL);
+            //            setFormData((prev) => {
+            //                return { ...prev, url: downloadURL };
+            //           });
+            //     });
+            // });
         }
 
         setFormData((prev) => {
@@ -122,10 +132,53 @@ function Contact() {
             //history.push("/volunteer/create"); //change page after submit
             console.log("Data submitted: ", formData);
 
-            //insert data to hasura
+            // send image to firebase
+            // console.log("on submit img triggered!");
+            // console.log("files:", e.target.files[0]);
+            // const file = e.target.files[0];
+            const file = formData.file;
+            const storageRef = app.storage().ref();
+            console.log("tetete", uuidv4());
+            const fileRef = storageRef.child(`${file.name}${uuidv4()}`);
+            console.log("file = ", file);
+            console.log("storageRef = ", storageRef);
+            console.log("fileRef = ", fileRef);
+            fileRef.put(file).then((e) => {
+                console.log("Uploaded a file");
+                console.log("didalam e = ", e);
+                e.ref.getDownloadURL().then(function (downloadURL) {
+                    console.log("File available at", downloadURL);
+                    // setFormData((prev) => {
+                    //     return { ...prev, url: downloadURL };
+                    // });
+                    // insert data to hasura
+                    insertEvents({
+                        variables: {
+                            object: {
+                                date: formData.date,
+                                desc: formData.desc,
+                                img: downloadURL,
+                                location: formData.location,
+                                title: formData.title,
+                            },
+                        },
+                    });
+                    console.log("selesai insert! 1");
+                });
+                console.log("selesai insert! 2");
+            });
+            console.log("url nya adalah: ", formData.url);
+
+            // insert data to hasura
             // insertEvents({
             //     variables: {
-            //         object: formData,
+            //         object: {
+            //             date: formData.date,
+            //             desc: formData.desc,
+            //             img: formData.url,
+            //             location: formData.location,
+            //             title: formData.title,
+            //         },
             //     },
             // });
         }
