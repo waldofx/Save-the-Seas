@@ -26,7 +26,6 @@ function Contact() {
         img: "",
         desc: "",
         file: "",
-        // url:"",
     });
     const [error, setError] = useState({
         title: "",
@@ -73,29 +72,13 @@ function Contact() {
         }
 
         if (name === "img") {
-            //send image to firebase
+            //get img file data
             console.log("on change img triggered!");
             console.log("files:", e.target.files[0]);
             const file = e.target.files[0];
             setFormData((prev) => {
                 return { ...prev, file: file };
             });
-
-            // const storageRef = app.storage().ref();
-            // const fileRef = storageRef.child(file.name);
-            // console.log("file = ", file);
-            // console.log("storageRef = ", storageRef);
-            // console.log("fileRef = ", fileRef);
-            // fileRef.put(file).then((e) => {
-            //     console.log("Uploaded a file");
-            //     console.log("didalam e = ", e);
-            //     e.ref.getDownloadURL().then(function (downloadURL) {
-            //         console.log("File available at", downloadURL);
-            //            setFormData((prev) => {
-            //                return { ...prev, url: downloadURL };
-            //           });
-            //     });
-            // });
         }
 
         setFormData((prev) => {
@@ -133,9 +116,6 @@ function Contact() {
             console.log("Data submitted: ", formData);
 
             // send image to firebase
-            // console.log("on submit img triggered!");
-            // console.log("files:", e.target.files[0]);
-            // const file = e.target.files[0];
             const file = formData.file;
             const storageRef = app.storage().ref();
             console.log("tetete", uuidv4());
@@ -148,9 +128,6 @@ function Contact() {
                 console.log("didalam e = ", e);
                 e.ref.getDownloadURL().then(function (downloadURL) {
                     console.log("File available at", downloadURL);
-                    // setFormData((prev) => {
-                    //     return { ...prev, url: downloadURL };
-                    // });
                     // insert data to hasura
                     insertEvents({
                         variables: {
@@ -163,24 +140,9 @@ function Contact() {
                             },
                         },
                     });
-                    console.log("selesai insert! 1");
+                    console.log("Data berhasil dikirim ke database!");
                 });
-                console.log("selesai insert! 2");
             });
-            console.log("url nya adalah: ", formData.url);
-
-            // insert data to hasura
-            // insertEvents({
-            //     variables: {
-            //         object: {
-            //             date: formData.date,
-            //             desc: formData.desc,
-            //             img: formData.url,
-            //             location: formData.location,
-            //             title: formData.title,
-            //         },
-            //     },
-            // });
         }
     }
 
@@ -188,11 +150,6 @@ function Contact() {
         <div>
             <Header />
             <div className={styles.myContainer}>
-                {/* <div className={styles.left}>
-                    <div className={styles.inner}>
-                        <img src={logo} alt="" />
-                    </div>
-                </div> */}
                 <div className={styles.right}>
                     <form onSubmit={handleSubmit} action="">
                         <h1>Create a New Event</h1>
