@@ -51,17 +51,18 @@ function Volunteer() {
                     to="/volunteer/create"
                     exact
                 >
-                    Create
+                    Create a new event
                 </NavLink>
             </div>
-            <div className={styles.breakTitle}>Upcoming Events</div>
+
+            <div className={styles.breakTitle}>What's popular?</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatasD.map((e) => {
+                        {eventdatasP.map((e) => {
                             return (
                                 <Event
                                     key={e.id}
@@ -78,14 +79,15 @@ function Volunteer() {
                     </ul>
                 )}
             </div>
-            <div className={styles.breakTitle}>What's popular?</div>
+
+            <div className={styles.breakTitle}>Upcoming Events</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
                 {isLoading && <p>Now loading...</p>}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatasP.map((e) => {
+                        {eventdatasD.map((e) => {
                             return (
                                 <Event
                                     key={e.id}

@@ -11,7 +11,11 @@ function About() {
             <div className={`${styles["bg-img"]} ${styles["about"]}`}>
                 <div className={styles["bg-text"]}>
                     ABOUT
-                    <div>BRUH BRUH BRUH BRUH BRUH BRUH BRUH BURH</div>
+                    <div>
+                        We are an organisation dedicated to saving the ocean and
+                        marine lifes! Join us and help out at your local beach
+                        for the sake of our planet!
+                    </div>
                 </div>
             </div>
             <div className={`${styles["bg-img"]} ${styles["problem"]}`}>
