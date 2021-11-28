@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 //import components and styles
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import LoadingSVG from "../Components/LoadingSVG";
 import styles from "./Volunteer.module.css";
 import Event from "../Components/Events/Event";
 
@@ -59,7 +60,7 @@ function Volunteer() {
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
-                {isLoading && <p>Now loading...</p>}
+                {isLoading && <LoadingSVG />}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
                         {eventdatasP.map((e) => {
@@ -84,7 +85,7 @@ function Volunteer() {
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
-                {isLoading && <p>Now loading...</p>}
+                {isLoading && <LoadingSVG />}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
                         {eventdatasD.map((e) => {
