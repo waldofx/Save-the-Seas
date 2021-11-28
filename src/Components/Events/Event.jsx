@@ -1,6 +1,7 @@
 import styles from "./Event.module.css";
 import useIncrementParticipants from "../../Hooks/UseIncrementParticipants";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 const Event = ({ id, title, location, date, participants, image, desc }) => {
     const { isAuthenticated } = useAuth0();
@@ -36,6 +37,11 @@ const Event = ({ id, title, location, date, participants, image, desc }) => {
                     Current Participants:{" "}
                     <span className={styles.participants}>{participants}</span>
                 </p>
+            </div>
+            <div className={styles.top}>
+                <Link to={`/volunteer/detail/${id}`} className="btn">
+                    Lihat Detail
+                </Link>
             </div>
             <button onClick={participateHandler}>Participate</button>
         </div>

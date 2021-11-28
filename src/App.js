@@ -13,6 +13,7 @@ import About from "./Pages/About";
 import News from "./Pages/News";
 import Volunteer from "./Pages/Volunteer";
 import Create from "./Pages/Create";
+import EventDetail from "./Pages/EventDetail";
 
 function App() {
     const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -43,7 +44,11 @@ function App() {
                             component={loginWithRedirect}
                         />
                         {/* <Route path="*" exact component={NotFound} /> */}
-                        {/* <Route exact path='/detail-event/:id' component={DetailEventPage}/> */}
+                        <Route
+                            exact
+                            path="/volunteer/detail/:id"
+                            component={EventDetail}
+                        />
                     </Switch>
                 </Router>
             </PersistGate>
