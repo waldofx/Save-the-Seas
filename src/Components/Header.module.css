@@ -18,10 +18,12 @@ header {
 
 .myList-nav {
     list-style-type: none;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .link {
@@ -29,6 +31,8 @@ header {
     color: #ffff;
     font-size: 13px;
     transition: 0.2s;
+    width: 100%;
+    display: block;
 }
 .link:hover {
     color: #3bcfa3;
@@ -46,21 +50,26 @@ a.icon {
 }
 
 .myList-nav button {
-    background-color: #0e498d;
-    border-radius: 20px;
-    width: 150px;
-    height: 40px;
-    font-size: 16px;
+    background-color: #ffff;
+    border-radius: 5px;
+    width: 100px;
+    height: 20px;
+    font-size: 13px;
     font-weight: 400;
     outline: none;
     border: none;
-    color: white;
+    color: #2e4c6d;
     padding: 0;
 }
 
 .myList-nav button:hover {
-    background-color: #578cc9;
+    background-color: #3bcfa3;
     cursor: pointer;
+}
+
+.link,
+.myList-nav button {
+    margin-left: 5em;
 }
 
 @keyframes showNav {
@@ -92,9 +101,20 @@ a.icon {
         position: relative;
         float: none;
         display: block;
+        width: 100%;
         animation: showNav 250ms ease-in-out both;
         text-align: center;
         margin: 0px;
         padding: 0px;
+    }
+
+    li {
+        /* border: 1px solid green; */
+        padding: 5px 0px;
+    }
+
+    .link,
+    .myList-nav button {
+        margin-left: 0em;
     }
 }

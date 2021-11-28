@@ -1,15 +1,23 @@
 import styles from "./Event.module.css";
 import useIncrementParticipants from "../../Hooks/UseIncrementParticipants";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Event = ({ id, title, location, date, participants, image, desc }) => {
+    const { isAuthenticated } = useAuth0();
+
     const { incrementParticipants } = useIncrementParticipants();
     const participateHandler = () => {
-        incrementParticipants({
-            variables: {
-                id: id,
-            },
-        });
+        if (isAuthenticated) {
+            incrementParticipants({
+                variables: {
+                    id: id,
+                },
+            });
+        } else {
+            alert("You need to log in first!");
+        }
     };
+
     return (
         <div className={styles.card}>
             <div>

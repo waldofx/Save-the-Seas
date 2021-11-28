@@ -44,14 +44,16 @@ function Volunteer() {
     return (
         <div>
             <Header />
-            <NavLink
-                className={styles.link}
-                activeClassName={styles.active}
-                to="/volunteer/create"
-                exact
-            >
-                Create
-            </NavLink>
+            <div className={styles.top}>
+                <NavLink
+                    className={styles.link}
+                    activeClassName={styles.active}
+                    to="/volunteer/create"
+                    exact
+                >
+                    Create
+                </NavLink>
+            </div>
             <div className={styles.breakTitle}>Upcoming Events</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>

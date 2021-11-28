@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
@@ -13,6 +14,7 @@ function Header() {
         <header>
             <div className={styles["header-container"]}>
                 <a
+                    // eslint-disable-next-line no-script-url
                     href="javascript:void(0);"
                     className={styles.icon}
                     onClick={() => setMenuState(!menuActive)}
@@ -24,19 +26,6 @@ function Header() {
                         menuActive ? styles["responsive"] : ""
                     }`}
                 >
-                    {/* <div
-                className={`${styles["header-container"]} ${
-                    menuActive ? styles["responsive"] : ""
-                }`}
-            >
-                <ul className={styles["myList-nav"]}> */}
-                    {/* <a
-                        href="javascript:void(0);"
-                        className={styles.icon}
-                        onClick={() => setMenuState(!menuActive)}
-                    >
-                        &#9776;
-                    </a> */}
                     <li>
                         <NavLink
                             className={styles.link}

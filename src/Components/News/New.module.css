@@ -49,6 +49,12 @@
 
 @media screen and (max-width: 780px) {
     .thumb {
-        display: none;
+        /* display: none; */
+        padding-right: 50%;
+        margin-bottom: 10px;
+    }
+
+    .contain {
+        display: block;
     }
 }
