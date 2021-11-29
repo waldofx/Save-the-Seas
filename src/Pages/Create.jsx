@@ -13,6 +13,7 @@ import {
     validateTitle,
     validateLocation,
     validateDate,
+    validateFile,
 } from "../Hooks/Validation/index";
 import { addFormData } from "../Store/formDataSlice";
 import useInsertEvent from "../Hooks/useInsertEvents";
@@ -31,6 +32,7 @@ function Contact() {
         title: "",
         location: "",
         date: "",
+        file: "",
     });
 
     const dispatch = useDispatch();
@@ -106,6 +108,15 @@ function Contact() {
             setError((prev) => ({
                 ...prev,
                 date: valDate.message,
+            }));
+            formIsValid = false;
+        }
+
+        const valFile = validateFile(formData.file);
+        if (!valFile.status) {
+            setError((prev) => ({
+                ...prev,
+                file: valFile.message,
             }));
             formIsValid = false;
         }
@@ -215,7 +226,7 @@ function Contact() {
                                 type="file"
                                 accept="image/png, image/jpeg"
                             ></input>
-                            <p className={styles.error}>{error.img}</p>
+                            <p className={styles.error}>{error.file}</p>
                         </div>
                         <div className={styles["form-control"]}>
                             <label htmlFor="desc">Description</label>
