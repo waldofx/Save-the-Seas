@@ -63,13 +63,7 @@ function EventDetail() {
 
     //form
     const [formData, setFormData] = useState({
-        // title: data?.title,
-        // location: data?.location,
-        // date: data?.date,
-        // img: data?.img,
-        // desc: data?.desc,
-        // file: "",
-        title: "a",
+        title: "",
         location: "",
         date: "",
         img: "",
@@ -77,9 +71,6 @@ function EventDetail() {
         file: "",
     });
     const [error, setError] = useState({
-        // title: data.title,
-        // location: data.location,
-        // date: data.date,
         title: "",
         location: "",
         date: "",
@@ -92,10 +83,11 @@ function EventDetail() {
         console.log(data.events[0].title);
         console.log(data.events[0].location);
         setFormData({
+            ...formData,
             title: data.events[0].title,
             location: data.events[0].location,
             date: data.events[0].date,
-            img: data.events[0].img,
+            // img: data.events[0].img,
             desc: data.events[0].desc,
             file: "",
         });
