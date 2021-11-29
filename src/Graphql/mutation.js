@@ -48,4 +48,21 @@ const DeleteEvents = gql`
     }
 `;
 
-export { IncrementParticipants, InsertEvents, DeleteEvents };
+const UpdateEvents = gql`
+    mutation MyMutation2($object: events_set_input = {}, $id: Int!) {
+        update_events(_set: $object, where: { id: { _eq: $id } }) {
+            returning {
+                date
+                desc
+                id
+                img
+                location
+                participants
+                title
+            }
+            affected_rows
+        }
+    }
+`;
+
+export { IncrementParticipants, InsertEvents, DeleteEvents, UpdateEvents };
