@@ -32,18 +32,16 @@ const Event = ({ id, title, location, date, participants, image, desc }) => {
                 <h1>{title}</h1>
                 <h4>Location: {location}</h4>
                 <h5>Date: {date}</h5>
-                <p>{desc}</p>
+                {/* <p>{desc}</p> */}
                 <p>
-                    Current Participants:{" "}
+                    Current Participants:
                     <span className={styles.participants}>{participants}</span>
                 </p>
             </div>
-            <div className={styles.top}>
-                <Link to={`/volunteer/detail/${id}`} className="btn">
-                    Lihat Detail
-                </Link>
-            </div>
             <button onClick={participateHandler}>Participate</button>
+            <div className={styles.detail}>
+                <Link to={`/volunteer/detail/${id}`}>Details</Link>
+            </div>
         </div>
     );
 };

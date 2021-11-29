@@ -21,7 +21,7 @@
     padding: 20px;
     padding-top: 0px;
     padding-bottom: 0px;
-    height: 220px;
+    height: 150px;
     overflow: auto;
 }
 
@@ -46,11 +46,23 @@
     outline: none;
     border: none;
     color: white;
-    float: right;
-    margin: 0 10px 10px 0;
+    /* float: right; */
+    margin: 0 75px 10px;
 }
 
 .card button:hover {
     background-color: #578cc9;
     cursor: pointer;
+}
+
+.detail a {
+    margin-left: 125px;
+    width: 100%;
+    color: black;
+}
+
+.detail {
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
 }

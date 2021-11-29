@@ -43,17 +43,28 @@ function EventDetail() {
                 <div>
                     {data?.events.map((v, i) => (
                         <div className={styles["container"]} key={i}>
-                            <div className={styles["details"]}>
-                                <img src={v.img} alt="thumbnail" />
-                                <p>Title: {v.title}</p>
-                                <p>Location: {v.location}</p>
-                                <p>Date: {v.date}</p>
-                                <p>Current Participants :{v.participants}</p>
-                                <p>
-                                    Description:
-                                    <br />
-                                    {v.desc}
-                                </p>
+                            <div className={styles["card"]}>
+                                <div>
+                                    <img src={v.img} alt="thumbnail" />
+                                </div>
+                                <div className={styles["details"]}>
+                                    <h1>{v.title}</h1>
+                                    <p>Location: {v.location}</p>
+                                    <p>Date: {v.date}</p>
+                                    <p>
+                                        Current Participants:
+                                        <span className={styles.participants}>
+                                            {v.participants}
+                                        </span>
+                                    </p>
+                                    <p>
+                                        Description:
+                                        <br />
+                                        <span className={styles.description}>
+                                            {v.desc}
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}
