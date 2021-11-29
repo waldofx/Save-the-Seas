@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //import components and styles
 import Header from "../Components/Header";
@@ -41,19 +42,24 @@ function Volunteer() {
     const isError = errorDataByParticipants || errorDataByDate;
     const isLoading = loadingDataByParticipants || loadingDataByDate;
 
+    //auth
+    const { isAuthenticated } = useAuth0();
+
     // ----------------- render -------------------------
     return (
         <div>
             <Header />
             <div className={styles.top}>
-                <NavLink
-                    className={styles.link}
-                    activeClassName={styles.active}
-                    to="/volunteer/create"
-                    exact
-                >
-                    Create a new event
-                </NavLink>
+                {isAuthenticated && (
+                    <NavLink
+                        className={styles.link}
+                        activeClassName={styles.active}
+                        to="/volunteer/create"
+                        exact
+                    >
+                        Create a new event
+                    </NavLink>
+                )}
             </div>
 
             <div className={styles.breakTitle}>What's popular?</div>

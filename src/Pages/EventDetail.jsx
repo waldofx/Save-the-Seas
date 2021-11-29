@@ -45,7 +45,8 @@ function EventDetail() {
 
     //Delete & Edit
     const { isAuthenticated } = useAuth0();
-    var isAuthenticatedDummy = true;
+    // var isAuthenticated = true;
+    const [editActive, setEditState] = useState(false);
     const { deleteEvents } = useDeleteEvent();
     const { updateEvents } = useUpdateEvent();
 
@@ -62,6 +63,7 @@ function EventDetail() {
 
     function handleEdit(e) {
         console.log(data.events[0]);
+        setEditState(!editActive);
         setFormData({
             ...formData,
             title: data.events[0].title,
@@ -256,7 +258,7 @@ function EventDetail() {
 
                             {/* form */}
 
-                            {isAuthenticatedDummy && (
+                            {isAuthenticated && (
                                 <div>
                                     <div className={styles.buttons}>
                                         <button
@@ -272,13 +274,17 @@ function EventDetail() {
                                             EDIT EVENT
                                         </button>
                                     </div>
-                                    <div className={styles.myContainer}>
+                                    <div
+                                        className={`${styles["myContainer"]} ${
+                                            editActive ? styles["show"] : ""
+                                        }`}
+                                    >
                                         <div className={styles.right}>
                                             <form
                                                 onSubmit={handleSubmit}
                                                 action=""
                                             >
-                                                <h1>Create a New Event</h1>
+                                                <h1>Edit Event</h1>
                                                 <div
                                                     className={
                                                         styles["form-control"]

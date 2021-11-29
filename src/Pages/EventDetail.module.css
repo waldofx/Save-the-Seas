@@ -84,6 +84,10 @@ body {
     font-family: "Roboto", sans-serif;
 }
 .myContainer {
+    display: none;
+}
+
+.show {
     display: flex;
 }
 

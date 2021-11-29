@@ -26,23 +26,23 @@ function App() {
                         <Route path="/about" exact component={About} />
                         <Route path="/news" exact component={News} />
                         <Route path="/volunteer" exact component={Volunteer} />
-                        {/* <Route
+                        <Route
                             path="/volunteer/create"
                             exact
                             component={Create}
-                        /> */}
-                        <Route exact path="/volunteer/create">
-                            {isAuthenticated ? (
-                                <Create />
-                            ) : (
+                        />
+                        {/* <Route exact path="/volunteer/create">
+                            {!isAuthenticated ? (
                                 <Redirect to="/login" />
+                            ) : (
+                                <Create />
                             )}
                         </Route>
                         <Route
                             exact
                             path="/login"
                             component={loginWithRedirect}
-                        />
+                        /> */}
                         {/* <Route path="*" exact component={NotFound} /> */}
                         <Route
                             exact
