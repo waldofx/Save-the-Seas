@@ -61,6 +61,19 @@ function EventDetail() {
         }
     }
 
+    function handleEdit(e) {
+        console.log(data.events[0]);
+        setFormData({
+            ...formData,
+            title: data.events[0].title,
+            location: data.events[0].location,
+            date: data.events[0].date,
+            // img: data.events[0].img,
+            desc: data.events[0].desc,
+            file: "",
+        });
+    }
+
     //form
     const [formData, setFormData] = useState({
         title: "",
@@ -77,22 +90,6 @@ function EventDetail() {
     });
     const dispatch = useDispatch();
     const history = useHistory();
-
-    function handleEdit(e) {
-        console.log(data.events[0]);
-        console.log(data.events[0].title);
-        console.log(data.events[0].location);
-        setFormData({
-            ...formData,
-            title: data.events[0].title,
-            location: data.events[0].location,
-            date: data.events[0].date,
-            // img: data.events[0].img,
-            desc: data.events[0].desc,
-            file: "",
-        });
-        console.log(formData);
-    }
 
     function handleChange(e) {
         const name = e.target.name;
@@ -172,53 +169,54 @@ function EventDetail() {
             console.log("Data submitted: ", formData);
 
             // send image to firebase
-            const file = formData.file;
-            const storageRef = app.storage().ref();
-            console.log("tetete", uuidv4());
-            const fileRef = storageRef.child(`${file.name}${uuidv4()}`);
-            console.log("file = ", file);
-            console.log("storageRef = ", storageRef);
-            console.log("fileRef = ", fileRef);
-            // fileRef.put(file).then((e) => {
-            //     console.log("Uploaded a file");
-            //     console.log("didalam e = ", e);
-            //     e.ref.getDownloadURL().then(function (downloadURL) {
-            //         console.log("File available at", downloadURL);
-            //         console.log("aaaaa");
-            //         // insert data to hasura
-            //         updateEvents({
-            //             variables: {
-            //                 id: id,
-            //                 object: {
-            //                     date: formData.date,
-            //                     desc: formData.desc,
-            //                     img: downloadURL,
-            //                     location: formData.location,
-            //                     title: formData.title,
-            //                 },
-            //             },
-            //         });
-            //         console.log("Data berhasil dikirim ke database!");
-            //         alert("Data berhasil dikirim ke database!");
-            //         // history.push("/volunteer/create"); //change page after submit
-            //     });
-            // });
-            console.log("aaaaa");
-            // insert data to hasura
-            updateEvents({
-                variables: {
-                    id: id,
-                    object: {
-                        date: formData.date,
-                        desc: formData.desc,
-                        location: formData.location,
-                        title: formData.title,
+            if (formData.file === "") {
+                // insert data to hasura
+                updateEvents({
+                    variables: {
+                        id: id,
+                        object: {
+                            date: formData.date,
+                            desc: formData.desc,
+                            location: formData.location,
+                            title: formData.title,
+                        },
                     },
-                },
-            });
-            console.log("Data berhasil dikirim ke database!");
-            // alert("Data berhasil dikirim ke database!");
-            // history.push("/volunteer/create"); //change page after submit
+                });
+                console.log("Data berhasil dikirim ke database!");
+                // alert("Data berhasil dikirim ke database!");
+                // history.push("/volunteer/create"); //change page after submit
+            } else {
+                const file = formData.file;
+                const storageRef = app.storage().ref();
+                console.log("tetete", uuidv4());
+                const fileRef = storageRef.child(`${file.name}${uuidv4()}`);
+                console.log("file = ", file);
+                console.log("storageRef = ", storageRef);
+                console.log("fileRef = ", fileRef);
+                fileRef.put(file).then((e) => {
+                    console.log("Uploaded a file");
+                    console.log("didalam e = ", e);
+                    e.ref.getDownloadURL().then(function (downloadURL) {
+                        console.log("File available at", downloadURL);
+                        // insert data to hasura
+                        updateEvents({
+                            variables: {
+                                id: id,
+                                object: {
+                                    date: formData.date,
+                                    desc: formData.desc,
+                                    img: downloadURL,
+                                    location: formData.location,
+                                    title: formData.title,
+                                },
+                            },
+                        });
+                        console.log("Data berhasil dikirim ke database!");
+                        alert("Data berhasil dikirim ke database!");
+                        // history.push("/volunteer/create"); //change page after submit
+                    });
+                });
+            }
         }
     }
 
@@ -261,6 +259,9 @@ function EventDetail() {
                                     </p>
                                 </div>
                             </div>
+
+                            {/* form */}
+
                             {isAuthenticatedDummy && (
                                 <div>
                                     <div className={styles.buttons}>
