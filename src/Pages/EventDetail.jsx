@@ -1,12 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //import components and styles
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import LoadingSVG from "../Components/LoadingSVG";
 import styles from "./EventDetail.module.css";
+
+//import hooks
+import useDeleteEvent from "../Hooks/useDeleteEvents";
 
 const GetEventByID = gql`
     query MyQuery($id: Int!) {
@@ -27,6 +31,21 @@ function EventDetail() {
     const { data, loading, error } = useQuery(GetEventByID, {
         variables: { id },
     });
+
+    //Delete
+    const { isAuthenticated } = useAuth0();
+    const { deleteEvents } = useDeleteEvent();
+
+    function handleDelete(e) {
+        if (window.confirm("Are you sure you want to delete this event?")) {
+            deleteEvents({
+                variables: {
+                    id: id,
+                },
+            });
+            window.alert("Event deleted!");
+        }
+    }
 
     return (
         <div>
@@ -66,6 +85,16 @@ function EventDetail() {
                                     </p>
                                 </div>
                             </div>
+                            {isAuthenticated && (
+                                <div className={styles.buttons}>
+                                    <button
+                                        className={styles["delete"]}
+                                        onClick={handleDelete}
+                                    >
+                                        DELETE EVENT
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
