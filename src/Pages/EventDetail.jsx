@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
@@ -89,7 +88,6 @@ function EventDetail() {
         date: "",
     });
     const dispatch = useDispatch();
-    const history = useHistory();
 
     function handleChange(e) {
         const name = e.target.name;
@@ -183,8 +181,6 @@ function EventDetail() {
                     },
                 });
                 console.log("Data berhasil dikirim ke database!");
-                // alert("Data berhasil dikirim ke database!");
-                // history.push("/volunteer/create"); //change page after submit
             } else {
                 const file = formData.file;
                 const storageRef = app.storage().ref();
@@ -212,8 +208,6 @@ function EventDetail() {
                             },
                         });
                         console.log("Data berhasil dikirim ke database!");
-                        alert("Data berhasil dikirim ke database!");
-                        // history.push("/volunteer/create"); //change page after submit
                     });
                 });
             }
