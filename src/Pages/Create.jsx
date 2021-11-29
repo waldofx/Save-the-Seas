@@ -19,7 +19,7 @@ import { addFormData } from "../Store/formDataSlice";
 import useInsertEvent from "../Hooks/useInsertEvents";
 import { app } from "../base";
 
-function Contact() {
+function Create() {
     const [formData, setFormData] = useState({
         title: "",
         location: "",
@@ -38,6 +38,7 @@ function Contact() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { insertEvents } = useInsertEvent();
+    const today = new Date().toJSON().slice(0, 10);
 
     function handleChange(e) {
         const name = e.target.name;
@@ -209,7 +210,10 @@ function Contact() {
                                 name="date"
                                 onChange={handleChange}
                                 // placeholder="yyyy-mm-dd"
-                                value={formData.date}
+                                // value={formData.date}
+                                // value={today}
+                                min={today}
+                                // max="2018-12-31"
                                 type="date"
                                 format="yyyy/mm/dd"
                             />
@@ -253,4 +257,4 @@ function Contact() {
     );
 }
 
-export default Contact;
+export default Create;

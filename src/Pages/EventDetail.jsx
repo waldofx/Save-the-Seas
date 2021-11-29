@@ -90,6 +90,7 @@ function EventDetail() {
         date: "",
     });
     const dispatch = useDispatch();
+    const today = new Date().toJSON().slice(0, 10);
 
     function handleChange(e) {
         const name = e.target.name;
@@ -363,6 +364,7 @@ function EventDetail() {
                                                             formData.date
                                                         }
                                                         value={formData.date}
+                                                        min={today}
                                                         type="date"
                                                         format="yyyy/mm/dd"
                                                     />
