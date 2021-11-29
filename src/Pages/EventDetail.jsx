@@ -49,8 +49,8 @@ function EventDetail() {
                                 </div>
                                 <div className={styles["details"]}>
                                     <h1>{v.title}</h1>
-                                    <p>Location: {v.location}</p>
-                                    <p>Date: {v.date}</p>
+                                    <h4>Location: {v.location}</h4>
+                                    <h5>Date: {v.date}</h5>
                                     <p>
                                         Current Participants:
                                         <span className={styles.participants}>
