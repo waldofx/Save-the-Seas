@@ -210,7 +210,7 @@ function Create() {
                                 name="date"
                                 onChange={handleChange}
                                 // placeholder="yyyy-mm-dd"
-                                // value={formData.date}
+                                value={formData.date}
                                 // value={today}
                                 min={today}
                                 // max="2018-12-31"
