@@ -5,9 +5,22 @@ import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 
 const Event = ({ id, title, location, date, participants, image, desc }) => {
-    const { isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const { incrementParticipants } = useIncrementParticipants();
+
+    const participateHandler = (e) => {
+        if (isAuthenticated) {
+            sendEmail(e);
+            incrementParticipants({
+                variables: {
+                    id: id,
+                },
+            });
+        } else {
+            alert("You need to log in first!");
+        }
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -17,7 +30,7 @@ const Event = ({ id, title, location, date, participants, image, desc }) => {
                 "service_jpy5haj",
                 "template_9snndy1",
                 {
-                    user_email: "waldofelix2@gmail.com",
+                    user_email: user.email,
                     title: title,
                     description: desc,
                     location: location,
@@ -33,19 +46,6 @@ const Event = ({ id, title, location, date, participants, image, desc }) => {
                     console.log("FAILED...", error);
                 }
             );
-    };
-
-    const participateHandler = (e) => {
-        // if (isAuthenticated) {
-        //     incrementParticipants({
-        //         variables: {
-        //             id: id,
-        //         },
-        //     });
-        // } else {
-        //     alert("You need to log in first!");
-        // }
-        sendEmail(e);
     };
 
     return (
