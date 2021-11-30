@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./Store";
 import { PersistGate } from "redux-persist/integration/react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Redirect } from "react-router-dom";
 
 //import pages
 import Home from "./Pages/Home";
@@ -16,7 +15,7 @@ import EventDetail from "./Pages/EventDetail";
 import Create from "./Pages/Create";
 
 function App() {
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
@@ -36,13 +35,6 @@ function App() {
                             exact
                             component={Create}
                         />
-                        {/* <Route exact path="/volunteer/create">
-                            {!isAuthenticated ? (
-                                <Redirect to="/login" />
-                            ) : (
-                                <Create />
-                            )}
-                        </Route> */}
                         <Route
                             exact
                             path="/login"
