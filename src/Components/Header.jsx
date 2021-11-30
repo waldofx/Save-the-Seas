@@ -64,13 +64,6 @@ function Header() {
                         </NavLink>
                     </li>
                     <li>
-                        {/* <NavLink
-                            className={styles.link}
-                            activeClassName={styles.active}
-                            to="/login"
-                        >
-                            LOG IN
-                        </NavLink> */}
                         <LoginButton />
                         <LogoutButton />
                     </li>
