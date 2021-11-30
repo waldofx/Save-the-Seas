@@ -220,7 +220,9 @@ function Create() {
                             <p className={styles.error}>{error.date}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="img">Image</label>
+                            <label htmlFor="img" className={styles["required"]}>
+                                Image
+                            </label>
                             <input
                                 data-testid="choose"
                                 id="img"
