@@ -2,21 +2,50 @@ import styles from "./Event.module.css";
 import useIncrementParticipants from "../../Hooks/UseIncrementParticipants";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const Event = ({ id, title, location, date, participants, image, desc }) => {
     const { isAuthenticated } = useAuth0();
 
     const { incrementParticipants } = useIncrementParticipants();
-    const participateHandler = () => {
-        if (isAuthenticated) {
-            incrementParticipants({
-                variables: {
-                    id: id,
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .send(
+                "service_jpy5haj",
+                "template_9snndy1",
+                {
+                    user_email: "waldofelix2@gmail.com",
+                    title: title,
+                    description: desc,
+                    location: location,
+                    date: date,
                 },
-            });
-        } else {
-            alert("You need to log in first!");
-        }
+                "user_6gjKFoE287e1HNjh8N46n"
+            )
+            .then(
+                function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                },
+                function (error) {
+                    console.log("FAILED...", error);
+                }
+            );
+    };
+
+    const participateHandler = (e) => {
+        // if (isAuthenticated) {
+        //     incrementParticipants({
+        //         variables: {
+        //             id: id,
+        //         },
+        //     });
+        // } else {
+        //     alert("You need to log in first!");
+        // }
+        sendEmail(e);
     };
 
     return (
