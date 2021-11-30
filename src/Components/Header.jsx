@@ -4,8 +4,8 @@ import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import LoginButton from "./Account/LoginButton";
+import LogoutButton from "./Account/LogoutButton";
 
 function Header() {
     const [menuActive, setMenuState] = useState(false);

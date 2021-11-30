@@ -12,8 +12,8 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import News from "./Pages/News";
 import Volunteer from "./Pages/Volunteer";
-import Create from "./Pages/Create";
 import EventDetail from "./Pages/EventDetail";
+import Create from "./Pages/Create";
 
 function App() {
     const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -27,6 +27,11 @@ function App() {
                         <Route path="/news" exact component={News} />
                         <Route path="/volunteer" exact component={Volunteer} />
                         <Route
+                            exact
+                            path="/volunteer/detail/:id"
+                            component={EventDetail}
+                        />
+                        <Route
                             path="/volunteer/create"
                             exact
                             component={Create}
@@ -37,17 +42,11 @@ function App() {
                             ) : (
                                 <Create />
                             )}
-                        </Route>
+                        </Route> */}
                         <Route
                             exact
                             path="/login"
                             component={loginWithRedirect}
-                        /> */}
-                        {/* <Route path="*" exact component={NotFound} /> */}
-                        <Route
-                            exact
-                            path="/volunteer/detail/:id"
-                            component={EventDetail}
                         />
                     </Switch>
                 </Router>
