@@ -1,3 +1,8 @@
+# About
+
+A website for volunteering to help clean beaches and seas. A mini project for the front end curriculum of Alterra.
+Check out development at: https://github.com/waldofx/Save-the-Seas/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
