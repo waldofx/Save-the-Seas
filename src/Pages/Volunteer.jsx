@@ -58,6 +58,7 @@ function Volunteer() {
                         exact
                     >
                         Create a new event
+                        <span className={styles.plus}>+</span>
                     </NavLink>
                 )}
             </div>
