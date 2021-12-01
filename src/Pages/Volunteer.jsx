@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //import components and styles
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import LoadingSVG from "../Components/LoadingSVG";
 import styles from "./Volunteer.module.css";
 import Event from "../Components/Events/Event";
 
@@ -40,26 +42,34 @@ function Volunteer() {
     const isError = errorDataByParticipants || errorDataByDate;
     const isLoading = loadingDataByParticipants || loadingDataByDate;
 
+    //auth
+    const { isAuthenticated } = useAuth0();
+
     // ----------------- render -------------------------
     return (
         <div>
             <Header />
-            <NavLink
-                className={styles.link}
-                activeClassName={styles.active}
-                to="/volunteer/create"
-                exact
-            >
-                Create
-            </NavLink>
-            <div className={styles.breakTitle}>Upcoming Events</div>
+            <div className={styles.top}>
+                {isAuthenticated && (
+                    <NavLink
+                        className={styles.link}
+                        activeClassName={styles.active}
+                        to="/volunteer/create"
+                        exact
+                    >
+                        Register a new event?
+                    </NavLink>
+                )}
+            </div>
+
+            <div className={styles.breakTitle}>What's popular?</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
-                {isLoading && <p>Now loading...</p>}
+                {isLoading && <LoadingSVG />}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatasD.map((e) => {
+                        {eventdatasP.map((e) => {
                             return (
                                 <Event
                                     key={e.id}
@@ -76,14 +86,15 @@ function Volunteer() {
                     </ul>
                 )}
             </div>
-            <div className={styles.breakTitle}>What's popular?</div>
+
+            <div className={styles.breakTitle}>Upcoming Events</div>
             <hr style={{ width: "98%" }} size={2} color="#000000" />
             <div className={styles.container}>
                 {isError && <p>Something Went Wrong...</p>}
-                {isLoading && <p>Now loading...</p>}
+                {isLoading && <LoadingSVG />}
                 {!isError && !isLoading && (
                     <ul className={styles.eventlist}>
-                        {eventdatasP.map((e) => {
+                        {eventdatasD.map((e) => {
                             return (
                                 <Event
                                     key={e.id}

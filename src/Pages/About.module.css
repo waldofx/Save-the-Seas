@@ -1,9 +1,11 @@
 .about {
-    background-image: url(../Assets/Images/clean.jpg);
+    /* background-image: url(../Assets/Images/clean.jpg); */
+    background-image: url(../Assets/Images/fishes.jpg);
 }
 
 .problem {
-    background-image: url(../Assets/Images/trash\ 1.jpeg);
+    /* background-image: url(../Assets/Images/trash\ 1.jpeg); */
+    background-image: url(../Assets/Images/trash3.jpg);
 }
 
 .solution {
@@ -27,12 +29,12 @@
 }
 
 .bg-text {
-    background-color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 255, 0.4);
-    font-weight: bold;
     border: 3px solid blue;
+    background-color: rgba(14, 24, 64, 0.8);
+    color: white;
+    font-weight: 600;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* z-index: 2; */
@@ -41,10 +43,17 @@
     text-align: center;
 }
 
+.bg-text h1 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
 .problem2 {
-    position: relative;
+    /* position: relative; */
+    top: 120%;
 }
 
 .solution2 {
-    position: relative;
+    /* position: relative; */
+    top: 200%;
 }

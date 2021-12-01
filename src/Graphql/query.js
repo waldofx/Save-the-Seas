@@ -2,7 +2,11 @@ import { gql } from "@apollo/client";
 
 const GetEventsByParticipants = gql`
     query MyQuery {
-        events(limit: 9, order_by: { participants: desc }) {
+        events(
+            limit: 3
+            order_by: { participants: desc }
+            where: { date: { _gt: "{now()}" } }
+        ) {
             id
             date
             desc
@@ -16,7 +20,7 @@ const GetEventsByParticipants = gql`
 
 const GetEventsByDate = gql`
     query MyQuery {
-        events(limit: 9, order_by: { date: asc }) {
+        events(order_by: { date: asc }, where: { date: { _gt: "{now()}" } }) {
             img
             title
             participants

@@ -3,10 +3,15 @@
     margin: 0 auto;
 }
 
-.title {
+.container ul {
+    padding: 0px;
+}
+
+h3.title {
     font-size: 40px;
     letter-spacing: 2.5px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
+    padding-top: 75px;
     color: #19345e;
 }

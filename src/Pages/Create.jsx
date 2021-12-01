@@ -13,12 +13,13 @@ import {
     validateTitle,
     validateLocation,
     validateDate,
+    validateFile,
 } from "../Hooks/Validation/index";
 import { addFormData } from "../Store/formDataSlice";
 import useInsertEvent from "../Hooks/useInsertEvents";
 import { app } from "../base";
 
-function Contact() {
+function Create() {
     const [formData, setFormData] = useState({
         title: "",
         location: "",
@@ -31,11 +32,13 @@ function Contact() {
         title: "",
         location: "",
         date: "",
+        file: "",
     });
 
     const dispatch = useDispatch();
     const history = useHistory();
     const { insertEvents } = useInsertEvent();
+    const today = new Date().toJSON().slice(0, 10);
 
     function handleChange(e) {
         const name = e.target.name;
@@ -110,9 +113,17 @@ function Contact() {
             formIsValid = false;
         }
 
+        const valFile = validateFile(formData.file);
+        if (!valFile.status) {
+            setError((prev) => ({
+                ...prev,
+                file: valFile.message,
+            }));
+            formIsValid = false;
+        }
+
         if (formIsValid) {
             dispatch(addFormData(formData));
-            //history.push("/volunteer/create"); //change page after submit
             console.log("Data submitted: ", formData);
 
             // send image to firebase
@@ -141,6 +152,8 @@ function Contact() {
                         },
                     });
                     console.log("Data berhasil dikirim ke database!");
+                    alert("Data berhasil dikirim ke database!");
+                    history.push("/volunteer/create"); //change page after submit
                 });
             });
         }
@@ -198,13 +211,18 @@ function Contact() {
                                 onChange={handleChange}
                                 // placeholder="yyyy-mm-dd"
                                 value={formData.date}
+                                // value={today}
+                                min={today}
+                                // max="2018-12-31"
                                 type="date"
                                 format="yyyy/mm/dd"
                             />
                             <p className={styles.error}>{error.date}</p>
                         </div>
                         <div className={styles["form-control"]}>
-                            <label htmlFor="img">Image</label>
+                            <label htmlFor="img" className={styles["required"]}>
+                                Image
+                            </label>
                             <input
                                 data-testid="choose"
                                 id="img"
@@ -214,7 +232,7 @@ function Contact() {
                                 type="file"
                                 accept="image/png, image/jpeg"
                             ></input>
-                            <p className={styles.error}>{error.img}</p>
+                            <p className={styles.error}>{error.file}</p>
                         </div>
                         <div className={styles["form-control"]}>
                             <label htmlFor="desc">Description</label>
@@ -223,7 +241,7 @@ function Contact() {
                                 name="desc"
                                 onChange={handleChange}
                                 value={formData.desc}
-                                placeholder="Your Full Name Here..."
+                                placeholder="The event’s description here..."
                             ></textarea>
                         </div>
                         <button
@@ -241,4 +259,4 @@ function Contact() {
     );
 }
 
-export default Contact;
+export default Create;
