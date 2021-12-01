@@ -57,8 +57,7 @@ function Volunteer() {
                         to="/volunteer/create"
                         exact
                     >
-                        Create a new event
-                        <span className={styles.plus}>+</span>
+                        Register a new event?
                     </NavLink>
                 )}
             </div>
