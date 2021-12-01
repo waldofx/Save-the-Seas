@@ -241,7 +241,7 @@ function Create() {
                                 name="desc"
                                 onChange={handleChange}
                                 value={formData.desc}
-                                placeholder="Your Full Name Here..."
+                                placeholder="The event’s description here..."
                             ></textarea>
                         </div>
                         <button
