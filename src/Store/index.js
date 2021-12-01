@@ -8,6 +8,7 @@ const reducers = combineReducers({
     formData: formData.reducer,
 });
 
+//local storage
 const persistConfig = {
     key: "form",
     storage,
